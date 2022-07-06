@@ -3,6 +3,8 @@
 namespace TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -10,12 +12,13 @@ class DefaultController extends Controller
     {
         return $this->render('TestBundle:Default:index.html.twig');
     }
-    public function formularioAction()
+
+public function getProductsAction(Request $request, Int $id = 0)
     {
-        return $this->render('TestBundle:Default:formulario.html.twig');
-    }
-    public function formularioProductosAction()
-    {
-        return $this->render('TestBundle:Default:formularioProductos.html.twig');
+        $columns = ['id_product', 'name', 'active'];
+        $condition = ['active' => 'true'];
+        if ($id) $condition['id_product'] = $id;
+        $response = $this->defaultModel->getProductsOrProduct('public', $columns, $condition);
+        return new JsonResponse($response);
     }
 }
