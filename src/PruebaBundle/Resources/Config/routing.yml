@@ -1,3 +1,0 @@
-prueba_homepage:
-  paht:     /prueba
-  defaults: { _controller: PruebaBundle:Prueba:index }

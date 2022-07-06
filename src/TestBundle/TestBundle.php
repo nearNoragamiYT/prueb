@@ -1,9 +1,9 @@
 <?php
 
-namespace PruebaBundle;
+namespace TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class PruebaBundle extends Bundle
+class TestBundle extends Bundle
 {
 }
