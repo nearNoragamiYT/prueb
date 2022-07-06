@@ -10,13 +10,13 @@
     </head>
     <body>
         {% block header %}
-            {% include 'default/Header.html.twig' %}
+            {% include 'main/directorio/header.html.twig' %}
         {% endblock %}
         {% block body %}
             <h1>Bienvenidos</h1>
         {% endblock %}
         {% block javascripts %}
-            <script src="{{ asset('js/materialize.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/datatable.js') }}"></script>
         {% endblock %}
