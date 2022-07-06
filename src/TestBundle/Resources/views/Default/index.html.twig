@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    
+    <div id="main">
+        <button id="addProduct" class="btn">Add product</button>
+        {% include 'TestBundle:table:productos.html.twig' %}
+        {% include 'TestBundle:Default:modal_add_product.html.twig' %}
+    </div>
 {% endblock  %}
 {% block javascripts %}
     {{ parent() }}
     <script>
-        const path = "{{ path('test_homepage_get_products', {'id': 0}) }}"
+        const url_get_product = "{{ path('test_get_products', {'id': 0}) }}"
+        const url_insert_product = "{{ path('test_add_product') }}"
     </script>
-    <script src="{{ asset('js/resources/TestBundle/js/index.js') }}"></script>
+    <script src="{{ asset('Resources/TestBundle/js/index.js') }}"></script>
 {% endblock  %}

@@ -22,8 +22,8 @@ class DefaultModel extends SQLModel
      */
     public function insertProduct(String $schema, Array $values, Int $id)
     {
-        $this->setSchema('public');
-        $query = $this->insertIntoTable('products',$values, $id);
-        return $this->executeQuery($query);
+        $this->setSchema($schema);
+        $response = $this->insertIntoTable('products',$values, $id);
+        return $response;
     }
 }
