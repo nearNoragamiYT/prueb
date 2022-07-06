@@ -1,1 +1,16 @@
-Hello World!
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('js/resources/TestBundle/css/app.css') }}">
+{% endblock %}
+
+{% block body %}
+    
+{% endblock  %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        const path = "{{ path('test_homepage_get_products', {'id': 0}) }}"
+    </script>
+    <script src="{{ asset('js/resources/TestBundle/js/index.js') }}"></script>
+{% endblock  %}
