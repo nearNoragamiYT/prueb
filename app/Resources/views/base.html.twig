@@ -3,13 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block header %}
+            {% include 'default/Header.html.twig' %}
+        {% endblock %}
         {% block body %}
             <h1>Bienvenidos</h1>
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/materialize.js') }}"></script>
+            <script src="{{ asset('js/jquery.js') }}"></script>
+            <script src="{{ asset('js/datatable.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
