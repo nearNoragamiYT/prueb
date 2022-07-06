@@ -14,10 +14,10 @@ class DefaultController extends Controller
     }
     public function formularioAction()
     {
-        return $this->render('TestBundle:Default:index.html.twig');
+        return $this->render('TestBundle:Default:formulario.html.twig');
     }public function formularioProductosAction()
     {
-        return $this->render('TestBundle:Default:index.html.twig');
+        return $this->render('TestBundle:Default:formularioProductos.html.twig');
     }
 public function getProductsAction(Request $request, Int $id = 0)
     {
