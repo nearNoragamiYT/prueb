@@ -12,7 +12,13 @@ class DefaultController extends Controller
     {
         return $this->render('TestBundle:Default:index.html.twig');
     }
-
+    public function formularioAction()
+    {
+        return $this->render('TestBundle:Default:index.html.twig');
+    }public function formularioProductosAction()
+    {
+        return $this->render('TestBundle:Default:index.html.twig');
+    }
 public function getProductsAction(Request $request, Int $id = 0)
     {
         $columns = ['id_product', 'name', 'active'];
