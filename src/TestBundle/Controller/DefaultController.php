@@ -43,6 +43,7 @@ class DefaultController extends Controller
         return new JsonResponse($response);
     }
 
+
     public function updateProductAction(Request $request)
     {
         $params = $request->request->all();

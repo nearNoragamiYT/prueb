@@ -26,6 +26,8 @@ function renderTable(table, url){
       {
         data: {},
         render: data => `<div><a class="btn btn_update" data_id="${data.id_product}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+       
+        /* render: data => '<div><a class="btn btn_update" data_id="' + data.id_product + '">Update</a><a class="btn btn_delete" data_id="' + data.id_product + '">delete</a></div>' */
       },
     ]
   })
@@ -71,7 +73,15 @@ $('.btn_close').on('click', function() {
   modal_product[0].removeAttribute('open')
 })
 
+<<<<<<< dev_yulissa
 
+=======
+$('.btn_delete').on('click', function() {
+  console.log('ok')
+  let data = this.getAttribute('data_id')
+  console.log(data)
+})
+>>>>>>> master
 
 $('#btnSave').on('click', function(e){
   e.preventDefault()
