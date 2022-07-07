@@ -15,8 +15,8 @@ parameters:
     mailer_user: ~
     mailer_password: ~
     PGSQL_TEST:
-        db_name: prueba
+        db_name: PRUEBA
         db_user: postgres
-        db_password: Ixpo
+        db_password: ixpo
         db_server: 127.0.0.1
         db_port: 5432

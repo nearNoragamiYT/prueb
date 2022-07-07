@@ -20,7 +20,8 @@ function renderTable(table, url){
       {data: 'active'},
       {
         data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}" data_name="${data.name}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+       
         /* render: data => '<div><a class="btn btn_update" data_id="' + data.id_product + '">Update</a><a class="btn btn_delete" data_id="' + data.id_product + '">delete</a></div>' */
       },
     ]
@@ -65,6 +66,12 @@ $(document).on('click', '.btn_update', function() {
 
 $('.btn_close').on('click', function() {
   modal_product[0].removeAttribute('open')
+})
+
+$('.btn_delete').on('click', function() {
+  console.log('ok')
+  let data = this.getAttribute('data_id')
+  console.log(data)
 })
 
 $('#btnSave').on('click', function(e){
