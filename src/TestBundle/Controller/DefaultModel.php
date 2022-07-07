@@ -26,4 +26,20 @@ class DefaultModel extends SQLModel
         $response = $this->insertIntoTable('products',$values, $id);
         return $response;
     }
+
+
+
+    /**
+     * delete product.
+     * @return Array ['status', 'data']
+     */
+    public function deleteProduct(String $schema, Array $values, Int $id)
+    {
+        $this->setSchema($schema);
+
+        
+        $response = $this->insertIntoTable('products',$values, $id);
+        return $response;
+    }
 }
+
