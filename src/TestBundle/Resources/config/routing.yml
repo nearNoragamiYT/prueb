@@ -24,3 +24,30 @@ test_update_product:
     methods: [POST]
     defaults: { _controller: TestBundle:Default:updateProduct }
 
+test_delete_product:
+    path:     /product/delete
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:deleteProduct }
+
+
+test_get_users:
+    path:     /get-users/{id}
+    methods: [GET]
+    defaults: { _controller: TestBundle:Default:getUsers, id: 0 }
+
+test_add_user:
+    path:     /add-users
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:addUser }
+
+test_update_user:
+    path:     /user/update
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:updateUser }
+
+test_delete_user:
+    path:     /user/delete
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:deleteUser }
+
+
