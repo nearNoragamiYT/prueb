@@ -44,8 +44,12 @@ class DefaultController extends Controller
     }
 
 
-
-
-
-
+    public function updateProductAction(Request $request)
+    {
+        $params = $request->request->all();
+        $response = $this->defaultModel->updateProduct($params);
+        $message = 'No se actualizo el producto';
+        $response['message'] = $response['status'] ? 'OK' : $message;
+        return new JsonResponse($response);
+    }
 }

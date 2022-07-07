@@ -29,6 +29,7 @@ class DefaultModel extends SQLModel
 
 
 
+
     /**
      * delete product.
      * @return Array ['status', 'data']
@@ -43,3 +44,16 @@ class DefaultModel extends SQLModel
     }
 }
 
+    /**
+     * $params ['id' => 'value', 'name' => 'value']]
+     * @return Array ['status', 'data']
+     */
+    public function updateProduct(array $params)
+    {
+        $query = 'UPDATE';
+        $query .= ' "public"."products"';
+        $query .= ' SET "name"=' . "'" . $params['name']."'";
+        $query .= ' WHERE "id_product"=' . $params['id'];
+        return $this->executeQuery($query);
+    }
+}
