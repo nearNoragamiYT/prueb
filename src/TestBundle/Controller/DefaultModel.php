@@ -26,4 +26,17 @@ class DefaultModel extends SQLModel
         $response = $this->insertIntoTable('products',$values, $id);
         return $response;
     }
+
+    /**
+     * $params ['id' => 'value', 'name' => 'value']]
+     * @return Array ['status', 'data']
+     */
+    public function updateProduct(array $params)
+    {
+        $query = 'UPDATE';
+        $query .= ' "public"."products"';
+        $query .= ' SET "name"=' . "'" . $params['name']."'";
+        $query .= ' WHERE "id_product"=' . $params['id'];
+        return $this->executeQuery($query);
+    }
 }

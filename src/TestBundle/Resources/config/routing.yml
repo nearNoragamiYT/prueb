@@ -19,3 +19,8 @@ test_add_product:
     methods: [POST]
     defaults: { _controller: TestBundle:Default:addProduct }
 
+test_update_product:
+    path:     /product/update
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:updateProduct }
+
