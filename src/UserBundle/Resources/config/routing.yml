@@ -1,3 +1,9 @@
 user_homepage:
-    path:     /
+    path:     /usuario
     defaults: { _controller: UserBundle:Default:index }
+
+test_get_user:
+    path:     /get-user/{id}
+    methods: [GET]
+    defaults: { _controller: UserBundle:Default:getUser, id: 0 }
+

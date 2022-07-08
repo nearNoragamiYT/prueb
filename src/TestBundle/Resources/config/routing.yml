@@ -24,3 +24,7 @@ test_update_product:
     methods: [POST]
     defaults: { _controller: TestBundle:Default:updateProduct }
 
+test_delete_product:
+    path:     /product/eliminar
+    methods: [POST]
+    defaults: { _controller: TestBundle:Default:eliminarProduct  }

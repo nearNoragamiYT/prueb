@@ -1,6 +1,6 @@
 <?php
 
-namespace TestBundle\Controller;
+namespace UserBundle\Controller;
 
 use Utilerias\SQLBundle\Model\SQLModel;
 
@@ -10,16 +10,7 @@ class DefaultModel extends SQLModel
      * get all products or one product
      * @return Array ['status', 'data']
      */
-    public function getProductsOrProduct(String $schema, Array $columns, Array $condition, Array $order = [])
-    {
-        $this->setSchema($schema);
-        return $this->selectFromTable('products',$columns, $condition, $order);
-    }
-    /**
-     * get all products or one product
-     * @return Array ['status', 'data']
-     */
-    public function getUsers(String $schema, Array $columns, Array $condition, Array $order = [])
+    public function getUser(String $schema, Array $columns, Array $condition, Array $order = [])
     {
         $this->setSchema($schema);
         return $this->selectFromTable('users',$columns, $condition, $order);
@@ -32,7 +23,7 @@ class DefaultModel extends SQLModel
     public function insertProduct(String $schema, Array $values, Int $id)
     {
         $this->setSchema($schema);
-        $response = $this->insertIntoTable('products',$values, $id);
+        $response = $this->insertIntoTable('users',$values, $id);
         return $response;
     }
 

@@ -1,1 +1,23 @@
-Hello World!
+ {% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('js/resources/UserBundle/css/app.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <button id="addProduct" class="btn">Add product</button>
+        {% include 'UserBundle:table:users.html.twig' %}
+        {% include 'UserBundle:Default:modal_add_users.html.twig' %}
+    </div>
+{% endblock  %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        const url_get_user = "{{ path('test_get_user', {'id': 0}) }}"
+        const url_insert_product = "{{ path('test_add_product') }}"
+        const url_update_product = "{{ path('test_update_product') }}"
+        const url_delete_product = "{{ path('test_delete_product') }}"
+    </script>
+    <script src="{{ asset('Resources/UserBundle/js/index.js') }}"></script>
+{% endblock  %}

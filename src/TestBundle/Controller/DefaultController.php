@@ -51,4 +51,13 @@ class DefaultController extends Controller
         $response['message'] = $response['status'] ? 'OK' : $message;
         return new JsonResponse($response);
     }
+
+    public function eliminarProductAction(Request $request)
+    {
+        $params = $request->request->all();
+        $response = $this->defaultModel->deleteProduct($params);
+        $message = 'No se elimino el producto';
+        $response['message'] = $response['status'] ? 'OK' : $message;
+        return new JsonResponse($response);
+    }
 }

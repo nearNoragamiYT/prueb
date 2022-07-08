@@ -1,12 +1,13 @@
-const formProduct = $('#form_product')
-const tableProduct = $('#table_products')
-const modal_product = $('#modal_addProduct')
-const iName = $('#nameP')
+const formProduct = $('#form_users')
+const tableUser = $('#table_users')
+const modal_User = $('#modal_addUser')
+const iName = $('#name')
+const imail = $('#email')
 
 let datatable = {} 
 
 $(document).ready(function(){
-  renderTable(tableProduct, url_get_product)
+  renderTable(tableUser, url_get_user)
 })
 
 function renderTable(table, url){
@@ -15,7 +16,9 @@ function renderTable(table, url){
       url
     },
     columns: [
+      {data: 'id_users'},
       {data: 'id_product'},
+      {data: 'email'},
       {data: 'name'},
       {data: 'active'},
       {
@@ -47,26 +50,26 @@ function addProduct(url, data){
 }
 
 $('#addProduct').on('click', function() {
-  /* modal_product[0].append('Nuevo producto')vanilla js*/
+  /* modal_User[0].append('Nuevo producto')vanilla js*/
   $('#modal_title').text('Nuevo producto')
   iName.val('')
-  /* modal_product[0].setAttribute('open',1) vanilla js*/
-  modal_product.prop('open',1)
-  /* modal_product[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')  vanilla js*/
-  modal_product.prop('style','position: absolute; width: 600px; height: 400px; z-index:1')
+  /* modal_User[0].setAttribute('open',1) vanilla js*/
+  modal_User.prop('open',1)
+  /* modal_User[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')  vanilla js*/
+  modal_User.prop('style','position: absolute; width: 600px; height: 400px; z-index:1')
 })
 
 $(document).on('click', '.btn_update', function() {
   $('#modal_title').text('Actualizar producto')
-  modal_product[0].setAttribute('open',1)
-  modal_product[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')
+  modal_User[0].setAttribute('open',1)
+  modal_User[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')
   iName.val($(this).attr('data_name'))
   $('#id').val($(this).attr('data_id'))
 })
 
 
 $('.btn_close').on('click', function() {
-  modal_product[0].removeAttribute('open')
+  modal_User[0].removeAttribute('open')
 })
 
 $('#btnSave').on('click', function(e){
@@ -75,14 +78,14 @@ $('#btnSave').on('click', function(e){
   console.log(data)
   if(!$('#id').val()){
     addProduct(url_insert_product, data)
-    modal_product[0].removeAttribute('open')
+    modal_User[0].removeAttribute('open')
   }else{
     data = {
       id: $('#id').val(),
       name: iName.val()
     }
     updateProduct(url_update_product, data)
-    modal_product[0].removeAttribute('open')
+    modal_User[0].removeAttribute('open')
   }
 })
 
