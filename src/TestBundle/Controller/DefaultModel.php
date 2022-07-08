@@ -42,7 +42,6 @@ class DefaultModel extends SQLModel
         $response = $this->insertIntoTable('products',$values, $id);
         return $response;
     }
-}
 
     /**
      * $params ['id' => 'value', 'name' => 'value']]
