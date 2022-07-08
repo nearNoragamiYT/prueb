@@ -51,7 +51,7 @@ class DefaultModel extends SQLModel
         $query .= ' WHERE "id_product"=' . $params['id'];
         return $this->executeQuery($query); 
     }
-
+///////////////////////////////////////////////////////////////////////////
 
      /**
      * get all users or one product
@@ -67,15 +67,15 @@ class DefaultModel extends SQLModel
      * insert product.
      * @return Array ['status', 'data']
      */
-    public function insertUser(String $schema, Array $values, Int $id)
+    public function insertUser(String $schema, Array $values, Int $idUs)
     {
         $this->setSchema($schema);
-        $response = $this->insertIntoTable('users',$values, $id);
+        $response = $this->insertIntoTable('users',$values, $idUs);
         return $response;
     }
 
      /**
-     * $params ['id' => 'value', 'name' => 'value']]
+     * $params ['idUs' => 'value', 'name' => 'value']]
      * @return Array ['status', 'data']
      */
     public function updateUser(array $params)
@@ -83,19 +83,19 @@ class DefaultModel extends SQLModel
         $query = 'UPDATE';
         $query .= ' "public"."users"';
         $query .= ' SET "name"=' . "'" . $params['name']."'";
-        $query .= ' WHERE "id_user"=' . $params['id'];
+        $query .= ' WHERE "id_users"=' . $params['idUs'];
         return $this->executeQuery($query);
     }
 
     /**
-     * $params ['id' => 'value', 'name' => 'value']]
+     * $params ['idUs' => 'value', 'name' => 'value']]
      * @return Array ['status', 'data']
      */
     public function deleteUser(array $params)
     {
         $query = 'DELETE FROM';
         $query .= ' "public"."users"';
-        $query .= ' WHERE "id_user"=' . $params['id'];
+        $query .= ' WHERE "id_users"=' . $params['idUs'];
         return $this->executeQuery($query); 
     }
 }

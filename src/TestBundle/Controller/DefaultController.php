@@ -25,6 +25,7 @@ class DefaultController extends Controller
         $condition = ['active' => 'true'];
         if ($id) $condition['id_product'] = $id;
         $response = $this->defaultModel->getProductsOrProduct('public', $columns, $condition);
+        
         $message = 'No hay productos';
         $response['message'] = $response['data'] ? 'OK' : $message;
         return new JsonResponse($response);
@@ -63,16 +64,16 @@ class DefaultController extends Controller
 
 
 
+/////////////////////////////////////////////////////
 
 
 
 
-
-    public function getUserAction(Int $id = 0)
+    public function getUsersAction(Int $idUs = 0)
     {
-        $columns = ['id_user', 'name', 'active'];
+        $columns = ['id_users','id_product', 'email', 'name', 'active'];
         $condition = ['active' => 'true'];
-        if ($id) $condition['id_user'] = $id;
+        if ($idUs) $condition['id_users'] = $idUs;
         $response = $this->defaultModel->getUsersOrUser('public', $columns, $condition);
         $message = 'No hay usuarios';
         $response['message'] = $response['data'] ? 'OK' : $message;
@@ -83,7 +84,7 @@ class DefaultController extends Controller
     {
         $params = $request->request->all();
         $values = [
-            'name' => "'" . $params['nameU'] . "'",
+            'name' => "'" . $params['name'] . "'",
             'active' => 'true'
         ];
         $response = $this->defaultModel->insertUser('public', $values, 0);

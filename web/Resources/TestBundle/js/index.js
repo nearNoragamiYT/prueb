@@ -8,14 +8,15 @@ const tableUser = $('#table_user')
 const modal_user = $('#modal_addUser')
 const UName = $('#nameU')
 
-let datatable = {} 
+let datatableproductos = {} , datatableusuarios = {}
 
 $(document).ready(function(){
-  renderTable(tableProduct, url_get_product)
+  renderTableProductos(tableProduct, url_get_product)
+  renderTableUsuarios(tableUser, url_get_user)
 })
 
-function renderTable(table, url){
-  datatable = table.DataTable({
+function renderTableProductos(table, url){
+  datatableproductos = table.DataTable({
     ajax: {
       url
     },
@@ -25,7 +26,7 @@ function renderTable(table, url){
       {data: 'active'},
       {
         data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}"><i class="material-icons">create</i></a><a class="btn btn_delete" data_id="${data.id_product}"><i class="material-icons">delete</i></a></div>`
       },
     ]
   })
@@ -42,7 +43,7 @@ function addProduct(url, data){
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableproductos.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
@@ -102,7 +103,7 @@ function updateProduct(url, data)
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableproductos.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
@@ -122,45 +123,43 @@ function deleteProduct(url, data){
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableproductos.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
     }
   })
 }
-
 $(document).on('click', '.btn_delete', function() {
   var id = {id:$(this).attr('data_id')}
   deleteProduct(url_delete_product, id)
 
 })
 
+//////////////////////////////////////////////////////////
 
 
+function renderTableUsuarios(table, url){
 
-
-
-$(document).ready(function(){
-  renderTable(tableUser, url_get_user)
-})
-
-function renderTable(table, url){
-  datatable = table.DataTable({
+  datatableusuarios = table.DataTable({
     ajax: {
       url
     },
     columns: [
-      {data: 'id_user'},
+      {data: 'id_users'},
+      {data: 'id_product'},
+      {data: 'email'},
       {data: 'name'},
       {data: 'active'},
       {
         data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_user}">Update</a><a class="btn btn_delete" data_id="${data.id_user}">delete</a></div>`
+        render: data => `<div><a class="btn btn_updateUs" data_idU="${data.id_users}"><i class="material-icons">create</i></a><a class="btn btn_deleteUs" data_idU="${data.id_users}"><i class="material-icons">delete</i></a></div>`
       },
     ]
   })
 }
+
+
 
 function addUser(url, data){
   $.ajax({
@@ -173,7 +172,7 @@ function addUser(url, data){
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableusuarios.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
@@ -184,19 +183,19 @@ function addUser(url, data){
 
 $('#addUser').on('click', function() {
   /* modal_user[0].append('Nuevo usuario')vanilla js*/
-  $('#modal_title').text('Nuevo usuario')
-  iName.val('')
+  $('#modal_titleUs').text('Nuevo usuario')
+  UName.val('')
   /* modal_user[0].setAttribute('open',1) vanilla js*/
   modal_user.prop('open',1)
   /* modal_user[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')  vanilla js*/
   modal_user.prop('style','position: absolute; width: 600px; height: 400px; z-index:1')
 })
-$(document).on('click', '.btn_update', function() {
-  $('#modal_title').text('Actualizar usuario')
+$(document).on('click', '.btn_updateUs', function() {
+  $('#modal_titleUs').text('Actualizar usuario')
   modal_user[0].setAttribute('open',1)
   modal_user[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')
   UName.val($(this).attr('data_name'))
-  $('#id').val($(this).attr('data_id'))
+  $('#idUs').val($(this).attr('data_idU'))
 })
 
 $('.btn_close').on('click', function() {
@@ -205,16 +204,16 @@ $('.btn_close').on('click', function() {
 
 
 
-$('#btnSave').on('click', function(e){
+$('#btnSaveUs').on('click', function(e){
   e.preventDefault()
   let data = formUser.serialize()
   console.log(data)
-  if(!$('#id').val()){
+  if(!$('#idUs').val()){
     addUser(url_insert_user, data)
     modal_user[0].removeAttribute('open')
   }else{
     data = {
-      id: $('#id').val(),
+      idUs: $('#idUs').val(),
       name: UName.val()
     }
     updateUser(url_update_user, data)
@@ -234,7 +233,7 @@ function updateUser(url, data)
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableusuarios.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
@@ -254,7 +253,7 @@ function deleteUser(url, data){
         return
       }
       alert(response.message)
-      datatable.ajax.reload()
+      datatableusuarios.ajax.reload()
     },
     error: function(request){
       console.error(request.message)
@@ -262,8 +261,8 @@ function deleteUser(url, data){
   })
 }
 
-$(document).on('click', '.btn_delete', function() {
-  var id = {id:$(this).attr('data_id')}
-  deleteUser(url_delete_user, id)
+$(document).on('click', '.btn_deleteUs', function() {
+  var idUs = {idUs:$(this).attr('data_idU')}
+  deleteUser(url_delete_user, idUs)
 
 })

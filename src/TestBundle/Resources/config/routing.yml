@@ -31,9 +31,9 @@ test_delete_product:
 
 
 test_get_users:
-    path:     /get-users/{id}
+    path:     /get-users/{idUs}
     methods: [GET]
-    defaults: { _controller: TestBundle:Default:getUsers, id: 0 }
+    defaults: { _controller: TestBundle:Default:getUsers, idUs: 0 }
 
 test_add_user:
     path:     /add-users
