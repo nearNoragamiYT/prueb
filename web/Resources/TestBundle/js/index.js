@@ -3,11 +3,6 @@ const tableProduct = $('#table_products')
 const modal_product = $('#modal_addProduct')
 const iName = $('#nameP')
 
-const formUser = $('#form_user')
-const tableUser = $('#table_user')
-const modal_user = $('#modal_addUser')
-const UName = $('#nameU')
-
 let datatable = {} 
 
 $(document).ready(function(){
@@ -73,15 +68,11 @@ $('.btn_close').on('click', function() {
   modal_product[0].removeAttribute('open')
 })
 
-<<<<<<< dev_yulissa
-
-=======
 $('.btn_delete').on('click', function() {
   console.log('ok')
   let data = this.getAttribute('data_id')
   console.log(data)
 })
->>>>>>> master
 
 $('#btnSave').on('click', function(e){
   e.preventDefault()
@@ -119,161 +110,3 @@ function updateProduct(url, data)
     }
   })
 }
-
-
-function deleteProduct(url, data){
-  $.ajax({
-    url,
-    data,
-    type: 'Post',
-    success: function(response){
-      if(response.status == false){
-        console.log(response.message)
-        return
-      }
-      alert(response.message)
-      datatable.ajax.reload()
-    },
-    error: function(request){
-      console.error(request.message)
-    }
-  })
-}
-
-$(document).on('click', '.btn_delete', function() {
-  var id = {id:$(this).attr('data_id')}
-  deleteProduct(url_delete_product, id)
-
-})
-
-
-
-
-
-
-$(document).ready(function(){
-  renderTable(tableUser, url_get_user)
-})
-
-function renderTable(table, url){
-  datatable = table.DataTable({
-    ajax: {
-      url
-    },
-    columns: [
-      {data: 'id_user'},
-      {data: 'name'},
-      {data: 'active'},
-      {
-        data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_user}">Update</a><a class="btn btn_delete" data_id="${data.id_user}">delete</a></div>`
-      },
-    ]
-  })
-}
-
-function addUser(url, data){
-  $.ajax({
-    url,
-    data,
-    type: 'Post',
-    success: function(response){
-      if(response.status == false){
-        console.log(response.message)
-        return
-      }
-      alert(response.message)
-      datatable.ajax.reload()
-    },
-    error: function(request){
-      console.error(request.message)
-    }
-  })
-}
-
-
-$('#addUser').on('click', function() {
-  /* modal_user[0].append('Nuevo usuario')vanilla js*/
-  $('#modal_title').text('Nuevo usuario')
-  iName.val('')
-  /* modal_user[0].setAttribute('open',1) vanilla js*/
-  modal_user.prop('open',1)
-  /* modal_user[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')  vanilla js*/
-  modal_user.prop('style','position: absolute; width: 600px; height: 400px; z-index:1')
-})
-$(document).on('click', '.btn_update', function() {
-  $('#modal_title').text('Actualizar usuario')
-  modal_user[0].setAttribute('open',1)
-  modal_user[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')
-  UName.val($(this).attr('data_name'))
-  $('#id').val($(this).attr('data_id'))
-})
-
-$('.btn_close').on('click', function() {
-  modal_user[0].removeAttribute('open')
-})
-
-
-
-$('#btnSave').on('click', function(e){
-  e.preventDefault()
-  let data = formUser.serialize()
-  console.log(data)
-  if(!$('#id').val()){
-    addUser(url_insert_user, data)
-    modal_user[0].removeAttribute('open')
-  }else{
-    data = {
-      id: $('#id').val(),
-      name: UName.val()
-    }
-    updateUser(url_update_user, data)
-    modal_user[0].removeAttribute('open')
-  }
-})
-
-function updateUser(url, data)
-{
-  $.ajax({
-    url,
-    data,
-    type: 'Post',
-    success: function(response){
-      if(response.status == false){
-        console.log(response.message)
-        return
-      }
-      alert(response.message)
-      datatable.ajax.reload()
-    },
-    error: function(request){
-      console.error(request.message)
-    }
-  })
-}
-
-
-function deleteUser(url, data){
-  $.ajax({
-    url,
-    data,
-    type: 'Post',
-    success: function(response){
-      if(response.status == false){
-        console.log(response.message)
-        return
-      }
-      alert(response.message)
-      datatable.ajax.reload()
-    },
-    error: function(request){
-      console.error(request.message)
-    }
-  })
-}
-
-$(document).on('click', '.btn_delete', function() {
-  var id = {id:$(this).attr('data_id')}
-  deleteUser(url_delete_user, id)
-
-})
