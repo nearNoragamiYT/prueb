@@ -27,9 +27,6 @@ class DefaultModel extends SQLModel
         return $response;
     }
 
-
-
-
     /**
      * delete product.
      * @return Array ['status', 'data']
