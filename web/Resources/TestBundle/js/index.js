@@ -72,8 +72,6 @@ $('.btn_close').on('click', function() {
   modal_product[0].removeAttribute('open')
 })
 
-
-
 $('#btnSave').on('click', function(e){
   e.preventDefault()
   let data = formProduct.serialize()

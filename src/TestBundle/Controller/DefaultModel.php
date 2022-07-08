@@ -27,7 +27,7 @@ class DefaultModel extends SQLModel
         return $response;
     }
 
-     /**
+    /**
      * $params ['id' => 'value', 'name' => 'value']]
      * @return Array ['status', 'data']
      */
@@ -51,7 +51,6 @@ class DefaultModel extends SQLModel
         $query .= ' WHERE "id_product"=' . $params['id'];
         return $this->executeQuery($query); 
     }
-///////////////////////////////////////////////////////////////////////////
 
      /**
      * get all users or one product

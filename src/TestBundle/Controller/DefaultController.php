@@ -35,10 +35,10 @@ class DefaultController extends Controller
     {
         $params = $request->request->all();
         $values = [
-            'name' => "'" . $params['nameP'] . "'",
+            'name' => "'". $params['nameP'] . "'",
             'active' => 'true'
         ];
-        $response = $this->defaultModel->insertProduct('public', $values, 0);
+        $response = $this->defaultModel->insertProduct('public',$values, 0);
         $message = 'No se inserto el producto';
         $response['message'] = $response['status'] ? 'OK' : $message;
         return new JsonResponse($response);
@@ -85,6 +85,7 @@ class DefaultController extends Controller
         $params = $request->request->all();
         $values = [
             'name' => "'" . $params['name'] . "'",
+            'id_product' => $params['id_p'],
             'active' => 'true'
         ];
         $response = $this->defaultModel->insertUser('public', $values, 0);
