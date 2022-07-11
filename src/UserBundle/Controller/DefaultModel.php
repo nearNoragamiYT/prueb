@@ -20,7 +20,7 @@ class DefaultModel extends SQLModel
      * insert product.
      * @return Array ['status', 'data']
      */
-    public function insertProduct(String $schema, Array $values, Int $id)
+    public function insertUsers(String $schema, Array $values, Int $id)
     {
         $this->setSchema($schema);
         $response = $this->insertIntoTable('users',$values, $id);
@@ -31,20 +31,22 @@ class DefaultModel extends SQLModel
      * $params ['id' => 'value', 'name' => 'value']]
      * @return Array ['status', 'data']
      */
-    public function updateProduct(array $params)
+    public function updateUser(array $params)
     {
         $query = 'UPDATE';
-        $query .= ' "public"."products"';
-        $query .= ' SET "name"=' . "'" . $params['name']."'";
-        $query .= ' WHERE "id_product"=' . $params['id'];
+        $query .= ' "public"."users"';   
+        $query .= ' SET "id_product"=' . "'" . $params['idP']."' ,";
+        $query .= ' "email"=' . "'" . $params['email']."' ,";
+        $query .= ' "name"=' . "'" . $params['name']."'";
+        $query .= ' WHERE "id_users"=' . $params['id'];
         return $this->executeQuery($query);
     }
-    public function deleteProduct(array $params)
+    public function deleteUser(array $params)
     {
         $query = 'DELETE FROM';
-        $query .= ' "public"."products"';
+        $query .= ' "public"."users"';
         // $query .= ' SET "name"=' . "'" . $params['name']."'";
-        $query .= ' WHERE "id_product"=' . $params['id'];
+        $query .= ' WHERE "id_users"=' . $params['id'];
         return $this->executeQuery($query);
     }
 }

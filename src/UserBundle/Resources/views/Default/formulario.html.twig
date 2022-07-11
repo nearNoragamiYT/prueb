@@ -1,21 +1,28 @@
 <form id="form_users" class="col s12">
 	<div class="row">
 		<div class="input-field col s6">
-			<input id="name" type="text" class="validate">
-			<label for="name">nombre usuario</label>
+			<input id="idP" name="idP" type="text" class="validate">
+			<label for="idP">id del producto</label>
 		</div>
-		<div class="input-field col s6">
-			<input id="email" type="email" class="validate">
-			<label for="email">Email</label>
+		<div class="row">
+			<div class="input-field col s6">
+				<input id="name" name="name" type="text" class="validate">
+				<label for="name">nombre usuario</label>
+			</div>
+			<div class="input-field col s6">
+				<input id="email" name="email" type="email" class="validate">
+				<label for="email">Email</label>
+			</div>
 		</div>
-	</div>
-
-	<div class="switch">
-		<label>
-			habilitado
-			<input id="activeU" name="activeU" type="checkbox">
-			<span class="lever" for="activeU"></span>
-			desabilitado
-		</label>
+		
+		<div class="switch">
+			<label>
+				habilitado
+				<input id="activeU" name="activeU" type="checkbox">
+				<span class="lever" for="activeU"></span>
+				desabilitado
+			</label>
+		</div>
+		<input id="id" name="id" type="text" value='' hidden>
 	</div>
 </form>

@@ -1,8 +1,10 @@
-const formProduct = $('#form_users')
+const formUser = $('#form_users')
 const tableUser = $('#table_users')
 const modal_User = $('#modal_addUser')
+const idP = $('#idP')
 const iName = $('#name')
 const imail = $('#email')
+
 
 let datatable = {} 
 
@@ -23,14 +25,14 @@ function renderTable(table, url){
       {data: 'active'},
       {
         data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}" data_name="${data.name}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+        render: data => `<div><a class="btn btn_update" data_idP="${data.id_product}" data_id="${data.id_users}" data_name="${data.name}" data_IM="${data.email}">Update</a><a class="btn btn_delete" data_id="${data.id_users}">delete</a></div>`
         /* render: data => '<div><a class="btn btn_update" data_id="' + data.id_product + '">Update</a><a class="btn btn_delete" data_id="' + data.id_product + '">delete</a></div>' */
       },
     ]
   })
 }
 
-function addProduct(url, data){
+function addUser(url, data){
   $.ajax({
     url,
     data,
@@ -49,9 +51,9 @@ function addProduct(url, data){
   })
 }
 
-$('#addProduct').on('click', function() {
+$('#addUser').on('click', function() {
   /* modal_User[0].append('Nuevo producto')vanilla js*/
-  $('#modal_title').text('Nuevo producto')
+  $('#modal_title').text('Nuevo usuario')
   iName.val('')
   /* modal_User[0].setAttribute('open',1) vanilla js*/
   modal_User.prop('open',1)
@@ -60,10 +62,12 @@ $('#addProduct').on('click', function() {
 })
 
 $(document).on('click', '.btn_update', function() {
-  $('#modal_title').text('Actualizar producto')
+  $('#modal_title').text('Actualizar usuario')
   modal_User[0].setAttribute('open',1)
   modal_User[0].setAttribute('style','position: absolute; width: 600px; height: 400px; z-index:1')
   iName.val($(this).attr('data_name'))
+  imail.val($(this).attr('data_IM'))
+  idP.val($(this).attr('data_idP'))
   $('#id').val($(this).attr('data_id'))
 })
 
@@ -74,22 +78,26 @@ $('.btn_close').on('click', function() {
 
 $('#btnSave').on('click', function(e){
   e.preventDefault()
-  let data = formProduct.serialize()
-  console.log(data)
+  let data = formUser.serialize()
+  let active = $("#activeU").prop("checked") ? false : true ;
+  console.log(active)
   if(!$('#id').val()){
-    addProduct(url_insert_product, data)
+    addUser(url_insert_user, data)
     modal_User[0].removeAttribute('open')
   }else{
     data = {
       id: $('#id').val(),
-      name: iName.val()
+      name: iName.val(),
+      idP: idP.val(),
+      email: imail.val(),
+
     }
-    updateProduct(url_update_product, data)
+    updateUser(url_update_user, data)
     modal_User[0].removeAttribute('open')
   }
 })
 
-function updateProduct(url, data)
+function updateUser(url, data)
 {
   $.ajax({
     url,
@@ -111,7 +119,7 @@ function updateProduct(url, data)
 
 $(document).on('click', '.btn_delete', function() {
   let id =  $('#id').val($(this).attr('data_id'))
-  deleteProduct(url_delete_product, id)
+  deleteProduct(url_delete_user, id)
 })
 function deleteProduct(url, data)
 {
