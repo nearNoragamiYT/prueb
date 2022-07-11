@@ -20,7 +20,7 @@ function renderTable(table, url){
       {data: 'active'},
       {
         data: {},
-        render: data => `<div><a class="btn btn_update" data_id="${data.id_product}" data_name="${data.name}">Update</a><a class="btn btn_delete" data_id="${data.id_product}">delete</a></div>`
+        render: data => `<div><a class="btn btn_update blue accent-3" data_id="${data.id_product}" data_name="${data.name}">Update</a><a class="btn btn_delete red" data_id="${data.id_product}">delete</a></div>`
         /* render: data => '<div><a class="btn btn_update" data_id="' + data.id_product + '">Update</a><a class="btn btn_delete" data_id="' + data.id_product + '">delete</a></div>' */
       },
     ]
