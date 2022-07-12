@@ -37,7 +37,8 @@ class DefaultModel extends SQLModel
         $query .= ' "public"."users"';   
         $query .= ' SET "id_product"=' . "'" . $params['idP']."' ,";
         $query .= ' "email"=' . "'" . $params['email']."' ,";
-        $query .= ' "name"=' . "'" . $params['name']."'";
+        $query .= ' "name"=' . "'" . $params['name']."' ,";
+        $query .= ' "active"=' . "'" . $params['active']."' ";
         $query .= ' WHERE "id_users"=' . $params['id'];
         return $this->executeQuery($query);
     }
